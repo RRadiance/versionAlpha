@@ -17,9 +17,12 @@ itemValue = []
 for i in range(len(data)):
     items.append(data[i].find_all(class_='table-cell'))
 
-for i in range(len(data)):
-    itemName.append(items[i].find_all('b'))
+#Seperate name titles from values 
+for j in range(len(items)):
+    for k in range(len(items[j])):
+        lst = items[j]
+        itemName.append(lst[k].find_all('b')) 
+        if k%2 != 0:
+            itemValue.append(lst[k])
 
-
-
-print(itemName)
+print(itemValue)
