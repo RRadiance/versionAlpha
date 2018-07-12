@@ -29,15 +29,15 @@ for i in range(len(items)):
 d = {}
 for i in range(0, len(items), 2):
     d[items[i]] = items[i+1].replace(',','')
-    
+
 
 
 """
-#Seperate name titles from values 
+#Seperate name titles from values
 for j in range(len(items)):
     for k in range(len(items[j])):
         lst = items[j]
-        itemName.extend(lst[k].find_all('b')) 
+        itemName.extend(lst[k].find_all('b'))
         if k%2 != 0:
             itemValue.append(lst[k])
 
