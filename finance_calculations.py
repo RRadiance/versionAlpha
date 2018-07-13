@@ -1,2 +1,1 @@
-class Basic_Calculations:
-    # All of Varshak's current formulas can go here
+# All of Varshak's current formulas can go here

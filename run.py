@@ -1,5 +1,5 @@
 from webscraper import Webscraper
-from finance_calculations import Basic_Calculations
+#from finance_calculations import Basic_Calculations
 
 if __name__ == '__main__':
 
@@ -7,7 +7,3 @@ if __name__ == '__main__':
     webscraper = Webscraper()
     ticker = input("Type the stock ticker: ")
     d = webscraper.get_data_nasdaq_summary(ticker)
-    
-    
-    
-    

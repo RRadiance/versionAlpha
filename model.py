@@ -1,1 +1,1 @@
-class Model
+#model class
