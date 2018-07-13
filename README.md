@@ -10,6 +10,9 @@ Work is being done to additional databasing and webscraping capabilities
 
 ### Required Modules
 The following modules are currently being used in Python 3.6:
+
 BeautifulSoup - HTML parser
+
 Requests - Access websites
+
 more to come...
