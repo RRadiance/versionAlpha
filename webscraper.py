@@ -39,6 +39,7 @@ class Webscraper:
         for i in range(0, len(items), 2):
             d[items[i]] = items[i+1].replace(',','')
 
+        print('Successfully stored summary information')
         print('Elapsed time: ' + str(time.time() - start_time))
         return d
 
@@ -49,11 +50,11 @@ class Webscraper:
             '/financials?query=income-statement'
         response = get(url)
         soup = BeautifulSoup(response.text, 'html.parser')
-        data = soup.find_all(class_= 'genTable') 
+        data = soup.find_all(class_= 'genTable')
         # data is a list of all tags with the name genTable
         # there is only one item in the data list
         # data[0] is a tag object. These objects have MANY methods
-        
+
         '''
         # Attempted to use tag methods to gather data
         new = []
@@ -71,7 +72,7 @@ class Webscraper:
         # text stores the relevant data in the form of a String
         # strip=True gets rid of the extra escape characters in the string (\n, etc)
         text = data[0].get_text(strip=True)
-        
+
         # year1 stores the income statement data for the most recent year
         year1 = []
         year2 = []
@@ -86,7 +87,7 @@ class Webscraper:
                   'Equity Earnings/Loss Unconsolidated Subsidiary', \
                   'Net income-cont. operations', 'Net income', \
                   'Net income appplicable to common shareholders']
-        
+
         # Hardcoding method that uses regex, String methods, and index positions
         text = text.replace(',', '')
         split_text = text.split()
@@ -114,11 +115,11 @@ class Webscraper:
             year1.append(-1)
         except Exception:
             print('There has been another type of error; investigate in webscraper.py')
-        
+
         # Use Regular Expressions to get all dollar values into a list
         pattern = re.compile(r'\$(\d*)') #Keeps text starting with $, followed by digits
         matches = pattern.findall(text) #matches is now a list
-        
+
         # Adds income statement values into appropiate year lists
         # WARNING: THIS ASSUMES THE COMPANY HAS INCOME STATEMENT INFORMATION FOR ALL 4 YEARS
         if (len(matches) % 4 != 0) or (len(matches) == 0):
@@ -133,38 +134,36 @@ class Webscraper:
                 year4.append(matches[counter+3])
                 counter += 4
         print('Successfully stored income statement information')
-        
+
         print('Elapsed time: ' + str(time.time() - start_time))
         return_tuple = (year1, year2, year3, year4)
         return return_tuple
         """
         # Unused code, possible alternative method
-        
+
         # Runs if income statement data exists for the most recent year
         if year1[0] != -1:
             pass
             #year1.append(split_text[9][0:0])
-        
+
         # TODO: Append all the data into the yearX lists, use regex?
         total_revenue = split_text[9]
         cost_of_revenue = split_text[11]
         gross_profit = split_text[12]
-        
+
         r_and_d = split_text[15]
         sales_general_admin = split_text[18]
-        
+
         operating_income = split_text[22]
         additional_income_expense_items = split_text[24]
         earnings_before_interest_and_taxt = split_text[28]
         interest_expense = split_text[29]
         earnings_before_tax = split_text[31]
         income_tax = split_text[32]
-        
+
         net_income = split_text[39]
-        
+
         def extract_dollar_values(s: str) -> tuple:
             for char in s:
                 pass
-        """ 
-    
-    
+        """
