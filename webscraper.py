@@ -41,7 +41,7 @@ class Webscraper:
         d = {}
         for i in range(0, len(items), 2):
             d[items[i]] = items[i+1].replace(',','')
-        print(d)
+        # print(d)
         
         '''
         # Puts data into a list
@@ -96,7 +96,7 @@ class Webscraper:
                   'Equity Earnings/Loss Unconsolidated Subsidiary', \
                   'Net income-cont. operations', 'Net income', \
                   'Net income appplicable to common shareholders']
-        print(len(legend))
+        # print(len(legend))
         
         # Hardcoding method that uses regex, String methods, and index positions
         text = text.replace(',', '')
@@ -162,7 +162,7 @@ class Webscraper:
                 year4.append(matches[counter+3])
                 counter += 4
         print('Successfully stored income statement information')
-        print(len(year1))
+        # print(len(year1))
         
         print('Elapsed time: ' + str(time.time() - start_time))
         return_tuple = (year1, year2, year3, year4)
